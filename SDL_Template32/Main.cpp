@@ -10,8 +10,6 @@ int main(int argc, char* args[]) // Main MUST have these parameters for SDL.
 {
 	myGame = Game("The Bear with the Glare", 800, 600);
 	myGame.run();
-
-	std::cout << "I hope this works";
 	return 0;
 }
 
