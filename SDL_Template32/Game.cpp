@@ -173,6 +173,7 @@ void Game::update()
 	background1->moveBackground(backgroundSpeed);
 	background2->moveBackground(backgroundSpeed);
 
+	bear->boundsCheck();
 
 	if (bear->isCollidingWith(*spike))
 	{
@@ -183,7 +184,7 @@ void Game::update()
 
 void Game::draw()
 {
-	SDL_SetRenderDrawColor(pRenderer, 255, 205, 90, 255);
+	SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(pRenderer);
 	
 	spriteManager.drawAll();

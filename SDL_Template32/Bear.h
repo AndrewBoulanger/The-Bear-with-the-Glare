@@ -17,6 +17,7 @@ public:
 	void update(float deltaTime) override;
 	void tryShoot();
 	void moveBy(int x, int y);
+	void boundsCheck();
 
 	// determine when you can shoot
 	float shootInterval = 0.1; // time between shots
