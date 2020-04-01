@@ -1,6 +1,6 @@
 #pragma once
 #include "Sprite.h"
-class Ship :
+class Bear :
 	public Sprite
 {
 
@@ -11,8 +11,8 @@ public:
 	float velX = 0;
 	float velY = 0;
 
-	Ship(SDL_Renderer* renderer, const char* filename, int sizeX, int sizeY, int num_frames = 1);
-	~Ship();
+	Bear(SDL_Renderer* renderer, const char* filename, int sizeX, int sizeY, int num_frames = 1);
+	~Bear();
 
 	void update(float deltaTime) override;
 	void tryShoot();

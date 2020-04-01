@@ -28,9 +28,10 @@ class Game
 	//bool buttonsPressed[16] = {false};
 
 public:
-	Ship* ship;
-	Sprite* asteroid;
-	Sprite* background;
+	Bear* bear;
+	Sprite* spike;
+	Sprite* background1;
+	Sprite* background2;
 	Bullet* bullet;
 	SpriteManager spriteManager;
 
