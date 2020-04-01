@@ -54,6 +54,13 @@ void Sprite::update(float deltaTime)
 {
 }
 
+void Sprite::moveBackground(int scrollSpeed)
+{
+	dst.x -= scrollSpeed;
+	if (dst.x <= 0 - dst.w)
+		dst.x = dst.w;
+}
+
 void Sprite::updateAnimation()
 {
 	if (playAnimation)

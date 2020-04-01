@@ -45,6 +45,7 @@ public:
 	void draw();
 	virtual void update(float deltaTime);
 	void updateAnimation(); // update the animation state -- added some bugs into it for fun.
+	void moveBackground(int scrollSpeed);
 
 	bool isCollidingWith(const Sprite &other);
 	bool isCollidingCircular(const Sprite& other);

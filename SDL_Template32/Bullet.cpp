@@ -13,7 +13,7 @@ Bullet::Bullet(SDL_Renderer* renderer, const char* filename, int sizeX, int size
 
 void Bullet::update(float deltaTime)
 {
-	dst.y -= deltaTime * speed;
+	dst.x += deltaTime * speed;
 	lifeTime -= deltaTime;
 
 	if (lifeTime <= 0)
@@ -31,7 +31,7 @@ void Bullet::onCollisionWith(const Sprite& other)
 
 		Sprite* explosion = new Sprite(renderer, "Assets/explosion_01.png", 32, 32, 6);
 		explosion->dst.x = dst.x;
-		explosion->dst.y = dst.y;
+		explosion->dst.y = dst.y -16;
 		explosion->destroyOnAnimationComplete = true;
 
 		spriteManager->add(explosion);

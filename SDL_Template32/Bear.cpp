@@ -1,4 +1,4 @@
-#include "Ship.h"
+#include "Bear.h"
 #include <iostream>
 #include "SpriteManager.h"
 #include "Bullet.h"
@@ -9,8 +9,8 @@ void Bear::tryShoot()
 	{
 		// shoot
 		Bullet * b = new Bullet(renderer, "Assets/bullet.png", 10, 5, 500);
-		b->dst.x = dst.x + dst.w/2;
-		b->dst.y = dst.y;
+		b->dst.x = dst.x + dst.w*0.6;
+		b->dst.y = dst.y + (dst.h*0.33);
 
 		spriteManager->add(b);
 		shootTimer = shootInterval;

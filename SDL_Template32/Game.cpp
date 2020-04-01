@@ -35,7 +35,7 @@ Game::~Game()
 void Game::run()
 {
 	
-	spike = new Sprite(pRenderer, "Assets/spike.png", 95, 85);
+	spike = new Sprite(pRenderer, "Assets/spike.png", 52, 47);
 	spike->tag = SpriteTag::OBSTACLE;
 
 	bear = new Bear(pRenderer, "Assets/bear_ani.png", 116, 110);
@@ -170,11 +170,16 @@ void Game::update()
 {
 	spriteManager.updateAll(deltaTime);
 
+	background1->moveBackground(backgroundSpeed);
+	background2->moveBackground(backgroundSpeed);
+
+
 	if (bear->isCollidingWith(*spike))
 	{
 		std::cout << "colliding" << std::endl;
 	}
 }
+
 
 void Game::draw()
 {
