@@ -34,23 +34,25 @@ Game::~Game()
 
 void Game::run()
 {
-	// load assets (sourced from https://opengameart.org/), credit goes to Kenny.nl
-	asteroid = new Sprite(pRenderer, "Assets/SpaceShooterRedux/PNG/Meteors/meteorBrown_big1.png", 100, 100);
-	asteroid->tag = SpriteTag::OBSTACLE;
+	
+	spike = new Sprite(pRenderer, "Assets/spike.png", 52, 47);
+	spike->tag = SpriteTag::OBSTACLE;
 
-	ship = new Ship(pRenderer, "Assets/SpaceShooterRedux/PNG/playerShip1_blue.png", 64, 64);
-	ship->tag = SpriteTag::PLAYER;
+	bear = new Bear(pRenderer, "Assets/bear_ani.png", 116, 110);
+	bear->tag = SpriteTag::PLAYER;
 
-	background = new Sprite(pRenderer, "Assets/SpaceShooterRedux/Backgrounds/purple.png", 800, 600);
+	background1 = new Sprite(pRenderer, "Assets/background1.bmp", 800, 600);
+	background2 = new Sprite(pRenderer, "Assets/background2.bmp", 800, 600);
 
-	spriteManager.add(background);
-	//spriteManager.add(new Sprite(pRenderer, "Assets/explosion_01.png", 64, 64, 6));
-	spriteManager.add(asteroid);
-	spriteManager.add(ship);
+	spriteManager.add(background1);
+	spriteManager.add(background2);
+	spriteManager.add(spike);
+	spriteManager.add(bear);
 
-	background->setPosition(0,0);
-	ship->setPosition(400, 400);
-	asteroid->setPosition(500, 200);
+	background1->setPosition(0,0);
+	background2->setPosition(800, 0);
+	bear->setPosition(400, 400);
+	spike->setPosition(500, 200);
 
 	//bullet = new Bullet(pRenderer, "Assets/SpaceShooterRedux/PNG/Power-ups/pill_red.png", 10, 10, 500);
 
@@ -97,22 +99,22 @@ void Game::input()
 			}
 			case(SDLK_LEFT):
 			{
-				ship->velX = -1;
+				bear->velX = -1;
 				break;
 			}
 			case(SDLK_RIGHT):
 			{
-				ship->velX=1;
+				bear->velX=1;
 				break;
 			}
 			case(SDLK_UP):
 			{
-				ship->velY=-1;
+				bear->velY=-1;
 				break;
 			}
 			case(SDLK_DOWN):
 			{
-				ship->velY=1;
+				bear->velY=1;
 				break;
 			}
 
@@ -135,22 +137,22 @@ void Game::input()
 			}
 			case(SDLK_LEFT):
 			{
-				ship->velX = 0;
+				bear->velX = 0;
 				break;
 			}
 			case(SDLK_RIGHT):
 			{
-				ship->velX = 0;
+				bear->velX = 0;
 				break;
 			}
 			case(SDLK_UP):
 			{
-				ship->velY = 0;
+				bear->velY = 0;
 				break;
 			}
 			case(SDLK_DOWN):
 			{
-				ship->velY = 0;
+				bear->velY = 0;
 				break;
 			}
 			}
@@ -160,7 +162,7 @@ void Game::input()
 
 		if (spacePressed)
 		{
-			ship->tryShoot();
+			bear->tryShoot();
 		}
 }
 
@@ -168,15 +170,21 @@ void Game::update()
 {
 	spriteManager.updateAll(deltaTime);
 
-	if (ship->isCollidingWith(*asteroid))
+	background1->moveBackground(backgroundSpeed);
+	background2->moveBackground(backgroundSpeed);
+
+	bear->boundsCheck();
+
+	if (bear->isCollidingWith(*spike))
 	{
 		std::cout << "colliding" << std::endl;
 	}
 }
 
+
 void Game::draw()
 {
-	SDL_SetRenderDrawColor(pRenderer, 255, 205, 90, 255);
+	SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(pRenderer);
 	
 	spriteManager.drawAll();

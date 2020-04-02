@@ -30,7 +30,7 @@
     <ClCompile Include="SpriteManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ship.cpp">
+    <ClCompile Include="Bear.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,10 +47,10 @@
     <ClInclude Include="SpriteManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Ship.h">
+    <ClInclude Include="SpriteTags.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteTags.h">
+    <ClInclude Include="Bear.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

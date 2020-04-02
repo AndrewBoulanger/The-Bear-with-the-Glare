@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include "Bullet.h"
 #include "SpriteManager.h"
-#include "Ship.h"
+#include "Bear.h"
 
 class Game
 {
@@ -17,6 +17,8 @@ class Game
 	// for gameplay
 	float deltaTime;
 	float gameTime = 0;
+	int backgroundSpeed = 2;
+	int timeLimit = 10000;
 
 	// A pointer points to an object and is denoted by a "*" in declaration. So g_pWindow is a Pointer which *points* to an object of type SDL_Window
 	SDL_Window* pWindow = nullptr;
@@ -28,9 +30,10 @@ class Game
 	//bool buttonsPressed[16] = {false};
 
 public:
-	Ship* ship;
-	Sprite* asteroid;
-	Sprite* background;
+	Bear* bear;
+	Sprite* spike;
+	Sprite* background1;
+	Sprite* background2;
 	Bullet* bullet;
 	SpriteManager spriteManager;
 
@@ -47,6 +50,11 @@ public:
 	// update your game world in here!
 	void update();
 
+	void raiseSpeed()
+	{
+		backgroundSpeed *= 2;
+	}
+
 	// draw your sprites here!
 	void draw();
 	
@@ -58,6 +66,8 @@ public:
 
 	// clean memory related to the Game object.
 	void cleanup();
+
+
 };
 
 
