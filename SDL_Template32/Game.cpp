@@ -24,6 +24,13 @@ Game::Game(const char* windowName, int windowSizeX, int windowSizeY)
 			{
 				IMG_Init(IMG_INIT_PNG);
 			}
+			if (Mix_Init(MIX_INIT_MP3) != 0)
+			{
+				std::cout << "mix failed to initialize\n";
+			}
+
+			Mix_OpenAudio(22050, AUDIO_U16, 8, 2048);
+			bgm = Mix_LoadWAV("Assets/bgm.mp3");
 		}
 	}
 }
