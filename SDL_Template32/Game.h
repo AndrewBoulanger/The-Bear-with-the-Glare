@@ -1,9 +1,11 @@
 // Game class with a game loop (input, update, draw)
 #pragma once
 #include <SDL.h>
+#include <SDL_mixer.h>
 #include "Bullet.h"
 #include "SpriteManager.h"
 #include "Bear.h"
+
 
 class Game
 {
@@ -35,6 +37,7 @@ public:
 	Sprite* background1;
 	Sprite* background2;
 	Bullet* bullet;
+	Mix_Chunk* bgm;
 	SpriteManager spriteManager;
 
 	Game();

@@ -22,7 +22,7 @@ Sprite::Sprite(SDL_Renderer* a_renderer, const char* filename, int sizeX, int si
 	frameCount = num_frames;
 	currentFrame = 0;
 }
-
+//
 Sprite::~Sprite()
 {
 }

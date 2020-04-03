@@ -24,6 +24,13 @@ Game::Game(const char* windowName, int windowSizeX, int windowSizeY)
 			{
 				IMG_Init(IMG_INIT_PNG);
 			}
+			if (Mix_Init(MIX_INIT_MP3) != 0)
+			{
+				std::cout << "mix failed to initialize" << std:: endl;
+			}
+
+			Mix_OpenAudio(22050, AUDIO_U16, 8, 2048);
+			bgm = Mix_LoadWAV("Assets/bgm.mp3");
 		}
 	}
 }
@@ -55,6 +62,9 @@ void Game::run()
 	spike->setPosition(500, 200);
 
 	//bullet = new Bullet(pRenderer, "Assets/SpaceShooterRedux/PNG/Power-ups/pill_red.png", 10, 10, 500);
+
+	
+	Mix_PlayChannel(0, bgm, 1);
 
 	isRunning = true;
 	
