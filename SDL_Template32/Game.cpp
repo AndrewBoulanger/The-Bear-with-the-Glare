@@ -29,8 +29,10 @@ Game::Game(const char* windowName, int windowSizeX, int windowSizeY)
 				std::cout << "mix failed to initialize" << std:: endl;
 			}
 
-			Mix_OpenAudio(22050, AUDIO_U16, 8, 2048);
+			Mix_OpenAudio(22400, AUDIO_U16, 8, 2048);
 			bgm = Mix_LoadWAV("Assets/bgm.mp3");
+
+			laser_SFX = Mix_LoadWAV("Assets/Laser.WAV");
 		}
 	}
 }
@@ -64,7 +66,8 @@ void Game::run()
 	//bullet = new Bullet(pRenderer, "Assets/SpaceShooterRedux/PNG/Power-ups/pill_red.png", 10, 10, 500);
 
 	
-	Mix_PlayChannel(0, bgm, 1);
+	Mix_PlayChannel(0, bgm, -1);
+	Mix_Volume(0, 64);
 
 	isRunning = true;
 	
@@ -104,7 +107,11 @@ void Game::input()
 			{
 			case(SDLK_SPACE):
 			{
-				spacePressed = true;
+				if (spacePressed == false)
+				{
+					spacePressed = true;
+					Mix_PlayChannel(1, laser_SFX, -1);
+				}
 				break;
 			}
 			case(SDLK_LEFT):
@@ -143,6 +150,7 @@ void Game::input()
 			case(SDLK_SPACE):
 			{
 				spacePressed = false;
+				Mix_HaltChannel(1);
 				break;
 			}
 			case(SDLK_LEFT):
@@ -173,6 +181,7 @@ void Game::input()
 		if (spacePressed)
 		{
 			bear->tryShoot();
+			
 		}
 }
 

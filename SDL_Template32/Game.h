@@ -38,6 +38,7 @@ public:
 	Sprite* background2;
 	Bullet* bullet;
 	Mix_Chunk* bgm;
+	Mix_Chunk* laser_SFX;
 	SpriteManager spriteManager;
 
 	Game();

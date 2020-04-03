@@ -33,7 +33,7 @@ void Bullet::onCollisionWith(const Sprite& other)
 		explosion->dst.x = dst.x;
 		explosion->dst.y = dst.y -16;
 		explosion->destroyOnAnimationComplete = true;
-
+		
 		spriteManager->add(explosion);
 	}
 }
