@@ -13,7 +13,9 @@ public:
 
 	float dirX = 1; 
 	float dirY = 0;
-	
+
+	float normalizer;
+
 	void update(float deltaTime) override;
 	void onCollisionWith(const Sprite& other) override;
 };
