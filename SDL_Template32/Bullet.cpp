@@ -24,7 +24,7 @@ void Bullet::update(float deltaTime)
 
 void Bullet::onCollisionWith(const Sprite& other)
 {
-	if (other.tag == OBSTACLE)
+	if (other.tag == ENEMY)
 	{
 		lifeTime = 0;
 		markedForRemoval = true;
@@ -33,7 +33,7 @@ void Bullet::onCollisionWith(const Sprite& other)
 		explosion->dst.x = dst.x;
 		explosion->dst.y = dst.y -16;
 		explosion->destroyOnAnimationComplete = true;
-
+		
 		spriteManager->add(explosion);
 	}
 }

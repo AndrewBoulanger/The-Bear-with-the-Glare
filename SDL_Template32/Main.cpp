@@ -1,5 +1,6 @@
 // Create and run the Game class
-// Joss Moo-Young
+// Andrew Boulanger 101292574, Pauleen Lam 101065605, Rachel Medeiros 101170493
+//with code from Joss and Ali
 #include <iostream>
 #include"Game.h"
 

@@ -7,7 +7,7 @@ class Bear :
 	int health = 3;
 public:
 
-	float speed = 5.0f;
+	float speed = 6;
 	float velX = 0;
 	float velY = 0;
 
@@ -15,12 +15,13 @@ public:
 	~Bear();
 
 	void update(float deltaTime) override;
+	void onCollisionWith(const Sprite& other) override;
 	void tryShoot();
 	void moveBy(int x, int y);
 	void boundsCheck();
 
 	// determine when you can shoot
-	float shootInterval = 0.1; // time between shots
+	float shootInterval = 0.2; // time between shots
 	float shootTimer = 0; // timer which
 };
 

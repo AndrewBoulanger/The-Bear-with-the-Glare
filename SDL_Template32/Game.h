@@ -5,6 +5,7 @@
 #include "Bullet.h"
 #include "SpriteManager.h"
 #include "Bear.h"
+#include "Enemy.h"
 
 
 class Game
@@ -31,13 +32,18 @@ class Game
 
 	//bool buttonsPressed[16] = {false};
 
+	//for spawn control
+	float enemiesSpawnDelay = 3.0f;
+	float enemyTimer = 1.0f;
+
+
 public:
 	Bear* bear;
-	Sprite* spike;
 	Sprite* background1;
 	Sprite* background2;
 	Bullet* bullet;
 	Mix_Chunk* bgm;
+	Mix_Chunk* laser_SFX;
 	SpriteManager spriteManager;
 
 	Game();

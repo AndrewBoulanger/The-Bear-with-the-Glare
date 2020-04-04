@@ -21,6 +21,7 @@ Sprite::Sprite(SDL_Renderer* a_renderer, const char* filename, int sizeX, int si
 
 	frameCount = num_frames;
 	currentFrame = 0;
+
 }
 //
 Sprite::~Sprite()
@@ -46,17 +47,21 @@ void Sprite::setSize(int x, int y)
 
 void Sprite::draw()
 {
-	SDL_RenderCopy(renderer, pSpriteTex, &src, &dst);
+	if(damageCooldown %4 < 2 )
+		SDL_RenderCopy(renderer, pSpriteTex, &src, &dst);
 }
 
 
 void Sprite::update(float deltaTime)
 {
+	dst.x -= speed;
+	if (tag != NONE && dst.x < 0-dst.w)
+		markedForRemoval = true;
 }
 
 void Sprite::moveBackground(int scrollSpeed)
 {
-	dst.x -= scrollSpeed;
+	//dst.x -= scrollSpeed;
 	if (dst.x <= 0 - dst.w)
 		dst.x = dst.w;
 }

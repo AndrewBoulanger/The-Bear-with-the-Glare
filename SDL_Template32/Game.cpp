@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SDL_image.h>
 
+
 Game::Game()
 {
 }
@@ -29,8 +30,10 @@ Game::Game(const char* windowName, int windowSizeX, int windowSizeY)
 				std::cout << "mix failed to initialize" << std:: endl;
 			}
 
-			Mix_OpenAudio(22050, AUDIO_U16, 8, 2048);
+			Mix_OpenAudio(22400, AUDIO_U16, 8, 2048);
 			bgm = Mix_LoadWAV("Assets/bgm.mp3");
+
+			laser_SFX = Mix_LoadWAV("Assets/Laser.WAV");
 		}
 	}
 }
@@ -42,29 +45,23 @@ Game::~Game()
 void Game::run()
 {
 	
-	spike = new Sprite(pRenderer, "Assets/spike.png", 52, 47);
-	spike->tag = SpriteTag::OBSTACLE;
+	background1 = new Sprite(pRenderer, "Assets/background1.bmp", 800, 600);
+	background2 = new Sprite(pRenderer, "Assets/background2.bmp", 800, 600);
 
 	bear = new Bear(pRenderer, "Assets/bear_ani.png", 116, 110);
 	bear->tag = SpriteTag::PLAYER;
 
-	background1 = new Sprite(pRenderer, "Assets/background1.bmp", 800, 600);
-	background2 = new Sprite(pRenderer, "Assets/background2.bmp", 800, 600);
-
 	spriteManager.add(background1);
 	spriteManager.add(background2);
-	spriteManager.add(spike);
 	spriteManager.add(bear);
 
 	background1->setPosition(0,0);
 	background2->setPosition(800, 0);
 	bear->setPosition(400, 400);
-	spike->setPosition(500, 200);
-
-	//bullet = new Bullet(pRenderer, "Assets/SpaceShooterRedux/PNG/Power-ups/pill_red.png", 10, 10, 500);
 
 	
-	Mix_PlayChannel(0, bgm, 1);
+	Mix_PlayChannel(0, bgm, -1);
+	Mix_Volume(0, 64);
 
 	isRunning = true;
 	
@@ -104,7 +101,11 @@ void Game::input()
 			{
 			case(SDLK_SPACE):
 			{
-				spacePressed = true;
+				if (spacePressed == false)
+				{
+					spacePressed = true;
+					Mix_PlayChannel(1, laser_SFX, -1);
+				}
 				break;
 			}
 			case(SDLK_LEFT):
@@ -143,6 +144,7 @@ void Game::input()
 			case(SDLK_SPACE):
 			{
 				spacePressed = false;
+				Mix_HaltChannel(1);
 				break;
 			}
 			case(SDLK_LEFT):
@@ -173,6 +175,7 @@ void Game::input()
 		if (spacePressed)
 		{
 			bear->tryShoot();
+			
 		}
 }
 
@@ -185,10 +188,17 @@ void Game::update()
 
 	bear->boundsCheck();
 
-	if (bear->isCollidingWith(*spike))
+	enemyTimer -= deltaTime;
+	if (enemyTimer <= 0)
 	{
-		std::cout << "colliding" << std::endl;
+		Enemy* newEnemy = new Enemy(pRenderer, "Assets/eye.png", 50, 65, 5);
+		newEnemy->setPosition(800 + rand() % 100,rand() % (600-65));
+		
+
+		spriteManager.add(newEnemy);
+		enemyTimer = enemiesSpawnDelay;
 	}
+
 }
 
 
