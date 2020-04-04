@@ -25,6 +25,9 @@ void Bear::update(float deltaTime)
 	if (shootTimer < 0) shootTimer = 0;
 	damageCooldown -= deltaTime;
 	if (damageCooldown < 0) damageCooldown = 0;
+
+	if (health <= 0)
+		markedForRemoval = true;
 }
 void Bear::onCollisionWith(const Sprite& other) 
 {
@@ -32,7 +35,7 @@ void Bear::onCollisionWith(const Sprite& other)
 	{
 		health--;
 		damageCooldown = 50;
-		std::cout << "collision\n";
+
 	}
 }
 

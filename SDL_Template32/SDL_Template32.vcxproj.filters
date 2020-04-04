@@ -33,7 +33,7 @@
     <ClCompile Include="Bear.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
+    <ClCompile Include="Eye.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +56,7 @@
     <ClInclude Include="Bear.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
+    <ClInclude Include="Eye.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

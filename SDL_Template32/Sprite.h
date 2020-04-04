@@ -15,6 +15,8 @@ protected:
 	SDL_Texture* pSpriteTex = nullptr;
 	SDL_Rect src; // where in the texture to draw from
 	float speed = 4;
+	SDL_Rect* target;
+	int health;
 
 public:
 	SpriteManager* spriteManager;
@@ -52,6 +54,11 @@ public:
 	bool isCollidingWith(const Sprite &other);
 	bool isCollidingCircular(const Sprite& other);
 	virtual void onCollisionWith(const Sprite& other);
+
+	void setTarget(SDL_Rect* a_target)
+	{
+		target = a_target;
+	}
 
 	void cleanup();
 };
