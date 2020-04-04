@@ -1,5 +1,8 @@
 #pragma once
 #include "Sprite.h"
+#include "Bullet.h"
+#include <time.h>
+#include <random>
 
 class Eye : public Sprite
 {
@@ -9,5 +12,9 @@ public:
 
 	void update(float deltaTime) override;
 	void onCollisionWith(const Sprite& other) override;
+
+	float shootInterval = 6.0f; // time between shots
+	float shootTimer = rand() %6 +1; // timer which
 	
+	void shoot();
 };

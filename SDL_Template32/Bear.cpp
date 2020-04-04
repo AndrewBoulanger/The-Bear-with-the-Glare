@@ -35,7 +35,7 @@ void Bear::onCollisionWith(const Sprite& other)
 	{
 		health--;
 		damageCooldown = 50;
-		std::cout << "collision\n";
+
 	}
 }
 

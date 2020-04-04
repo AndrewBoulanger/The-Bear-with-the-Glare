@@ -4,7 +4,7 @@ class Bear :
 	public Sprite
 {
 
-	int health = 3;
+	int health = 10;
 public:
 
 	float speed = 6;
