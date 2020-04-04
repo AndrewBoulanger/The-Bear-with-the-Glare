@@ -5,7 +5,7 @@
 #include "Bullet.h"
 #include "SpriteManager.h"
 #include "Bear.h"
-#include "Enemy.h"
+#include "Eye.h"
 
 
 class Game
