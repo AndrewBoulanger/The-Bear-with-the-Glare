@@ -54,11 +54,14 @@ void Sprite::draw()
 
 void Sprite::update(float deltaTime)
 {
+	dst.x -= speed;
+	if (tag != NONE && dst.x < 0-dst.w)
+		markedForRemoval = true;
 }
 
 void Sprite::moveBackground(int scrollSpeed)
 {
-	dst.x -= scrollSpeed;
+	//dst.x -= scrollSpeed;
 	if (dst.x <= 0 - dst.w)
 		dst.x = dst.w;
 }

@@ -24,7 +24,7 @@ void Bullet::update(float deltaTime)
 
 void Bullet::onCollisionWith(const Sprite& other)
 {
-	if (other.tag == OBSTACLE)
+	if (other.tag == ENEMY)
 	{
 		lifeTime = 0;
 		markedForRemoval = true;

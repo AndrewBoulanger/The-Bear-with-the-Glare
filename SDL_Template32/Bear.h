@@ -7,7 +7,7 @@ class Bear :
 	int health = 3;
 public:
 
-	float speed = 5.0f;
+	float speed = 6;
 	float velX = 0;
 	float velY = 0;
 

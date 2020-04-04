@@ -49,7 +49,7 @@ void SpriteManager::updateAll(float deltaTime)
 		for (int j = i + 1; j < sprites.size(); j++)
 		{ // j is the second sprite
 
-			if (sprites[i]->isCollidingWith(*sprites[j]))
+			if (sprites[i]->isCollidingCircular(*sprites[j]))
 			{
 				sprites[i]->onCollisionWith(*sprites[j]);
 				sprites[j]->onCollisionWith(*sprites[i]);

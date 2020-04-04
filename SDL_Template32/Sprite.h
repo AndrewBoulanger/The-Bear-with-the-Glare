@@ -14,6 +14,7 @@ protected:
 	SDL_Renderer* renderer;
 	SDL_Texture* pSpriteTex = nullptr;
 	SDL_Rect src; // where in the texture to draw from
+	float speed = 4;
 
 public:
 	SpriteManager* spriteManager;

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SDL_image.h>
 
+
 Game::Game()
 {
 }
@@ -44,26 +45,19 @@ Game::~Game()
 void Game::run()
 {
 	
-	spike = new Sprite(pRenderer, "Assets/spike.png", 52, 47);
-	spike->tag = SpriteTag::OBSTACLE;
+	background1 = new Sprite(pRenderer, "Assets/background1.bmp", 800, 600);
+	background2 = new Sprite(pRenderer, "Assets/background2.bmp", 800, 600);
 
 	bear = new Bear(pRenderer, "Assets/bear_ani.png", 116, 110);
 	bear->tag = SpriteTag::PLAYER;
 
-	background1 = new Sprite(pRenderer, "Assets/background1.bmp", 800, 600);
-	background2 = new Sprite(pRenderer, "Assets/background2.bmp", 800, 600);
-
 	spriteManager.add(background1);
 	spriteManager.add(background2);
-	spriteManager.add(spike);
 	spriteManager.add(bear);
 
 	background1->setPosition(0,0);
 	background2->setPosition(800, 0);
 	bear->setPosition(400, 400);
-	spike->setPosition(100, 200);
-
-	//bullet = new Bullet(pRenderer, "Assets/SpaceShooterRedux/PNG/Power-ups/pill_red.png", 10, 10, 500);
 
 	
 	Mix_PlayChannel(0, bgm, -1);
@@ -193,6 +187,17 @@ void Game::update()
 	background2->moveBackground(backgroundSpeed);
 
 	bear->boundsCheck();
+
+	enemyTimer -= deltaTime;
+	if (enemyTimer <= 0)
+	{
+		Enemy* newEnemy = new Enemy(pRenderer, "Assets/eye.png", 50, 65, 5);
+		newEnemy->setPosition(800 + rand() % 100,rand() % (600-65));
+		
+
+		spriteManager.add(newEnemy);
+		enemyTimer = enemiesSpawnDelay;
+	}
 
 }
 
