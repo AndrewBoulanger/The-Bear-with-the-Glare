@@ -21,6 +21,7 @@ Sprite::Sprite(SDL_Renderer* a_renderer, const char* filename, int sizeX, int si
 
 	frameCount = num_frames;
 	currentFrame = 0;
+
 }
 //
 Sprite::~Sprite()
@@ -46,7 +47,8 @@ void Sprite::setSize(int x, int y)
 
 void Sprite::draw()
 {
-	SDL_RenderCopy(renderer, pSpriteTex, &src, &dst);
+	if(damageCooldown %4 < 2 )
+		SDL_RenderCopy(renderer, pSpriteTex, &src, &dst);
 }
 
 

@@ -23,6 +23,17 @@ void Bear::update(float deltaTime)
 	moveBy(velX, velY);
 	shootTimer -= deltaTime;
 	if (shootTimer < 0) shootTimer = 0;
+	damageCooldown -= deltaTime;
+	if (damageCooldown < 0) damageCooldown = 0;
+}
+void Bear::onCollisionWith(const Sprite& other) 
+{
+	if ((other.tag == ENEMY || other.tag == OBSTACLE) && damageCooldown < 1)
+	{
+		health--;
+		damageCooldown = 50;
+		std::cout << "collision\n";
+	}
 }
 
 void Bear::moveBy(int x, int y)

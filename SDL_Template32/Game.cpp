@@ -61,7 +61,7 @@ void Game::run()
 	background1->setPosition(0,0);
 	background2->setPosition(800, 0);
 	bear->setPosition(400, 400);
-	spike->setPosition(500, 200);
+	spike->setPosition(100, 200);
 
 	//bullet = new Bullet(pRenderer, "Assets/SpaceShooterRedux/PNG/Power-ups/pill_red.png", 10, 10, 500);
 
@@ -194,10 +194,6 @@ void Game::update()
 
 	bear->boundsCheck();
 
-	if (bear->isCollidingWith(*spike))
-	{
-		std::cout << "colliding" << std::endl;
-	}
 }
 
 

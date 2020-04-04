@@ -31,6 +31,7 @@ public:
 	bool loopAnimation = true;
 	bool playAnimation = true;
 	bool destroyOnAnimationComplete = false;
+	int damageCooldown = 0;
 
 
 	// constructors -- these are used when initializing an object
