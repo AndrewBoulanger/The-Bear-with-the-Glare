@@ -17,5 +17,6 @@ public:
 	void drawAll();
 
 	void add(Sprite* spriteToAdd);
+	
 };
 

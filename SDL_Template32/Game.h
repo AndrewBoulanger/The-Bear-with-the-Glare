@@ -33,7 +33,7 @@ class Game
 	//bool buttonsPressed[16] = {false};
 
 	//for spawn control
-	float enemiesSpawnDelay = 3.0f;
+	float enemiesSpawnDelay = 2.0f;
 	float enemyTimer = 1.0f;
 
 

@@ -72,3 +72,4 @@ void SpriteManager::add(Sprite* spriteToAdd)
 	sprites.push_back(spriteToAdd);
 	spriteToAdd->spriteManager = this;
 }
+

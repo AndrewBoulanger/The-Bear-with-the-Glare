@@ -1,4 +1,5 @@
 #include "Sprite.h"
+#include <iostream>
 
 Sprite::Sprite()
 {
@@ -21,7 +22,7 @@ Sprite::Sprite(SDL_Renderer* a_renderer, const char* filename, int sizeX, int si
 
 	frameCount = num_frames;
 	currentFrame = 0;
-
+	
 }
 //
 Sprite::~Sprite()
@@ -57,6 +58,7 @@ void Sprite::update(float deltaTime)
 	dst.x -= speed;
 	if (tag != NONE && dst.x < 0-dst.w)
 		markedForRemoval = true;
+
 }
 
 void Sprite::moveBackground(int scrollSpeed)
