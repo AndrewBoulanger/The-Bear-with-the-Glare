@@ -18,7 +18,7 @@ void Eye::shoot()
 	if (shootTimer <= 0)
 	{
 		// shoot
-		Bullet* b = new Bullet(renderer, "Assets/laserRed01.png", 25, 10, 200,-1, 0);
+		Bullet* b = new Bullet(renderer, "Assets/laserRed01.png", 25, 10, 200,target->x-dst.x, target->y -dst.y);
 		b->dst.x = dst.x - dst.w * 0.6;
 		b->dst.y = dst.y + (dst.h * 0.33);
 

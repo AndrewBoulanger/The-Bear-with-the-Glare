@@ -1,6 +1,6 @@
 #include "Bullet.h"
 #include "SpriteManager.h"
-
+#include <math.h>
 
 Bullet::Bullet()
 {
@@ -15,8 +15,9 @@ Bullet::Bullet(SDL_Renderer* renderer, const char* filename, int sizeX, int size
 {
 	speed = a_speed;
 	tag = SpriteTag::OBSTACLE;
-	dirX = targX;
-	dirY = targY;
+	normalizer = sqrt((targX * targX) + (targY * targY));
+	dirX = targX/normalizer;
+	dirY = targY/normalizer;
 
 }
 
@@ -35,7 +36,7 @@ void Bullet::update(float deltaTime)
 
 void Bullet::onCollisionWith(const Sprite& other)
 {
-	if (other.tag == ENEMY && tag != ENEMY )
+	if (other.tag == ENEMY && tag != OBSTACLE )
 	{
 		lifeTime = 0;
 		markedForRemoval = true;
