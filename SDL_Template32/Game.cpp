@@ -2,6 +2,8 @@
 #include <iostream>
 #include <SDL_image.h>
 
+//if you are seeing this, github is useful
+
 
 Game::Game()
 {
@@ -48,7 +50,7 @@ void Game::run()
 	background1 = new Sprite(pRenderer, "Assets/background1.bmp", 800, 600);
 	background2 = new Sprite(pRenderer, "Assets/background2.bmp", 800, 600);
 
-	bear = new Bear(pRenderer, "Assets/bear_ani.png", 116, 110);
+	bear = new Bear(pRenderer, "Assets/bear.png", 116, 110, 4);
 	bear->tag = SpriteTag::PLAYER;
 
 	spriteManager.add(background1);

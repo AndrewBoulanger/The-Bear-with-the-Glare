@@ -19,4 +19,3 @@ public:
 	void update(float deltaTime) override;
 	void onCollisionWith(const Sprite& other) override;
 };
-
