@@ -6,12 +6,6 @@ class Bear :
 
 	int health = 10;
 
-	int displayFrame = 0;
-	int frameCount = 4;
-
-	int frameWidth = 480;
-	int frameHeight = 480;
-
 public:
 
 	float speed = 6;
