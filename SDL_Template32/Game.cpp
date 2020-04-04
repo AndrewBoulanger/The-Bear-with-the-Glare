@@ -2,6 +2,8 @@
 #include <iostream>
 #include <SDL_image.h>
 
+//if you are seeing this, github is useful
+
 
 Game::Game()
 {
