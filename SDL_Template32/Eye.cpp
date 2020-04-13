@@ -6,7 +6,7 @@ Eye::Eye(SDL_Renderer* a_renderer, const char* filename, int sizeX, int sizeY, f
 {
 	tag = SpriteTag::ENEMY;
 	speed = a_speed;
-	health = 5;
+	health = 3;
 }
 
 Eye::~Eye()

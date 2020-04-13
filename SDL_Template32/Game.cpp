@@ -27,12 +27,12 @@ Game::Game(const char* windowName, int windowSizeX, int windowSizeY)
 			{
 				IMG_Init(IMG_INIT_PNG);
 			}
-			if (Mix_Init(MIX_INIT_MP3) != 0)
+			if (Mix_Init(MIX_INIT_MP3) == 0)
 			{
 				std::cout << "mix failed to initialize" << std:: endl;
 			}
 
-			Mix_OpenAudio(22400, AUDIO_U16, 8, 2048);
+			Mix_OpenAudio(22400, AUDIO_U16, 8, 1024);
 			bgm = Mix_LoadWAV("Assets/bgm.mp3");
 
 			laser_SFX = Mix_LoadWAV("Assets/Laser.WAV");
@@ -189,6 +189,8 @@ void Game::update()
 	background2->moveBackground(backgroundSpeed);
 
 	bear->boundsCheck();
+	if (bear->markedForRemoval)
+		isRunning = false;  
 
 	enemyTimer -= deltaTime;
 	if (enemyTimer <= 0)
@@ -242,5 +244,5 @@ void Game::cleanup()
 	spriteManager.cleanup();
 	SDL_DestroyWindow(pWindow);
 	SDL_DestroyRenderer(pRenderer);
-	std::cout << "Goodbye World" << std::endl;
+	std::cout << "Game Over" << std::endl;
 }
