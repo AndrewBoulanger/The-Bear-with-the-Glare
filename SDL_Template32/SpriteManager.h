@@ -11,7 +11,6 @@ public:
 	SpriteManager();
 	~SpriteManager();
 
-
 	void cleanup();
 	void updateAll(float deltaTime);
 	void drawAll();

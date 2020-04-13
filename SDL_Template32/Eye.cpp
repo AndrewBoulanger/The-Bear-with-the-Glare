@@ -38,6 +38,9 @@ void Eye::update(float deltaTime)
 
 	shootTimer -= deltaTime;
 	if (shootTimer < 0) shoot();
+
+	if (dst.x <= 0 - dst.w)
+		markedForRemoval = true;
 	
 }
 
