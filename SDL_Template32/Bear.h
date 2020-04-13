@@ -8,7 +8,7 @@ class Bear :
 
 public:
 
-	float speed = 6;
+	float speed = 180;
 	float velX = 0;
 	float velY = 0;
 
@@ -17,8 +17,8 @@ public:
 
 	void update(float deltaTime) override;
 	void onCollisionWith(const Sprite& other) override;
-	void tryShoot();
-	void moveBy(int x, int y);
+	bool tryShoot();
+	void moveBy(int x, int y, float deltaTime);
 	void boundsCheck();
 
 	// determine when you can shoot

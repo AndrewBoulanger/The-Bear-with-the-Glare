@@ -3,24 +3,29 @@
 #include "SpriteManager.h"
 #include "Bullet.h"
 
-void Bear::tryShoot()
+bool Bear::tryShoot()
 {
 	if (shootTimer <= 0)
 	{
 		// shoot
-		Bullet * b = new Bullet(renderer, "Assets/bullet.png", 20, 5, 500);
-		b->dst.x = dst.x + dst.w*0.6;
-		b->dst.y = dst.y + (dst.h*0.33);
+		Bullet* b = new Bullet(renderer, "Assets/bullet.png", 20, 5, 500);
+		b->dst.x = dst.x + dst.w * 0.6;
+		b->dst.y = dst.y + (dst.h * 0.33);
 
 		spriteManager->add(b);
 		shootTimer = shootInterval;
+		return true;
 	}
+	else return false;
 
 }
 
 void Bear::update(float deltaTime) 
 {
-	moveBy(velX, velY);
+	moveBy(velX, velY, deltaTime);
+	velX *= .5;
+	velY *= 0.5;
+
 	shootTimer -= deltaTime;
 	if (shootTimer < 0) shootTimer = 0;
 	damageCooldown -= deltaTime;
@@ -39,10 +44,10 @@ void Bear::onCollisionWith(const Sprite& other)
 	}
 }
 
-void Bear::moveBy(int x, int y)
+void Bear::moveBy(int x, int y, float deltaTime)
 {
-	dst.x += x * speed;
-	dst.y += y * speed;
+	dst.x += x * speed * deltaTime;
+	dst.y += y * speed * deltaTime;
 }
 
 void Bear::boundsCheck()

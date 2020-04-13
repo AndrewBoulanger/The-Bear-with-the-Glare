@@ -93,92 +93,65 @@ void Game::input()
 
 	while (SDL_PollEvent(&sdlEvent))
 	{
+
+		for (int key = 0; key < NUM_KEYBINDS; key++)
+		{
+			if (sdlEvent.key.keysym.sym == keyBindings[key])
+				buttonsPressed[key] = true;
+		}
+
 		if (sdlEvent.type == SDL_QUIT)
 		{
 			isRunning = false;
 		}
 		else if (sdlEvent.type == SDL_KEYDOWN)
 		{
-			switch (sdlEvent.key.keysym.sym)
+			for (int key = 0; key < NUM_KEYBINDS; key++)
 			{
-			case(SDLK_SPACE):
-			{
-				if (spacePressed == false)
-				{
-					spacePressed = true;
-					Mix_PlayChannel(1, laser_SFX, -1);
-				}
-				break;
-			}
-			case(SDLK_LEFT):
-			{
-				bear->velX = -1;
-				break;
-			}
-			case(SDLK_RIGHT):
-			{
-				bear->velX=1;
-				break;
-			}
-			case(SDLK_UP):
-			{
-				bear->velY=-1;
-				break;
-			}
-			case(SDLK_DOWN):
-			{
-				bear->velY=1;
-				break;
-			}
-
-			case(SDLK_ESCAPE):
-			{
-				quit();
-				break;
-			}
+				if (sdlEvent.key.keysym.sym == keyBindings[key])
+					buttonsPressed[key] = true;
 			}
 		}
 
 		if (sdlEvent.type == SDL_KEYUP)
 		{
-			switch (sdlEvent.key.keysym.sym)
+			for (int key = 0; key < NUM_KEYBINDS; key++)
 			{
-			case(SDLK_SPACE):
-			{
-				spacePressed = false;
-				Mix_HaltChannel(1);
-				break;
-			}
-			case(SDLK_LEFT):
-			{
-				bear->velX = 0;
-				break;
-			}
-			case(SDLK_RIGHT):
-			{
-				bear->velX = 0;
-				break;
-			}
-			case(SDLK_UP):
-			{
-				bear->velY = 0;
-				break;
-			}
-			case(SDLK_DOWN):
-			{
-				bear->velY = 0;
-				break;
-			}
+				if (sdlEvent.key.keysym.sym == keyBindings[key])
+					buttonsPressed[key] = false;
 			}
 		}
 		
 	}
 
-		if (spacePressed)
+		if (buttonsPressed[0])
 		{
-			bear->tryShoot();
-			
+			if(bear->tryShoot()) //bear tryShoot returns true if it successfully fires a bullet
+				Mix_PlayChannel(1, laser_SFX, 0);
 		}
+		if (buttonsPressed[1])
+		{
+			bear->velX = -1;
+
+		}
+		if (buttonsPressed[2])
+		{
+			bear->velX = 1;
+
+		}
+		if (buttonsPressed[3])
+		{
+			bear->velY = -1;;
+
+		}
+		if (buttonsPressed[4])
+		{
+			bear->velY = 1;;
+
+		}
+
+
+
 }
 
 void Game::update()

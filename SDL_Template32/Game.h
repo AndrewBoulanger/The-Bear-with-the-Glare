@@ -7,6 +7,7 @@
 #include "Bear.h"
 #include "Eye.h"
 
+#define NUM_KEYBINDS 6
 
 class Game
 {
@@ -30,12 +31,14 @@ class Game
 	// to know when to quit
 	bool isRunning;
 
-	//bool buttonsPressed[16] = {false};
+	int keyBindings[NUM_KEYBINDS] = { SDLK_SPACE, SDLK_LEFT, SDLK_RIGHT, SDLK_UP, SDLK_DOWN, SDLK_ESCAPE };
+	bool buttonsPressed[NUM_KEYBINDS] = {false};
 
 	//for spawn control
 	float enemiesSpawnDelay = 2.0f;
 	float enemyTimer = 1.0f;
 
+	int score = 0;
 
 public:
 	Bear* bear;
