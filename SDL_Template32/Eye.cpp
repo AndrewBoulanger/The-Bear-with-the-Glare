@@ -51,8 +51,11 @@ void Eye::onCollisionWith(const Sprite& other)
 	{
 		health--;
 		damageCooldown = 10;
-		if(health <= 0)
+		if (health <= 0) 
+		{
+			points = 10;
 			markedForRemoval = true;
+		}
 	}
 
 }

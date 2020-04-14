@@ -36,6 +36,7 @@ public:
 	bool destroyOnAnimationComplete = false;
 	int damageCooldown = 0;
 
+	int points = 0;
 
 	// constructors -- these are used when initializing an object
 	Sprite();

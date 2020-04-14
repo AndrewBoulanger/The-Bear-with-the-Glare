@@ -21,4 +21,5 @@ public:
 	float counter = 0;
 	float interval = rand() % 10 + 10;
 	void shoot();
+	
 };
