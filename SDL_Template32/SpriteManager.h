@@ -10,7 +10,7 @@ private:
 public:
 	SpriteManager();
 	~SpriteManager();
-
+	int score = 0;
 	void cleanup();
 	void updateAll(float deltaTime);
 	void drawAll();

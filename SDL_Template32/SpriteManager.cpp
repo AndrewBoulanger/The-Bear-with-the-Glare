@@ -14,6 +14,7 @@ void SpriteManager::cleanup()
 {
 	for (int i = 0; i < sprites.size(); i++)
 	{
+		
 		sprites[i]->cleanup();
 		delete sprites[i];
 	}
@@ -33,6 +34,7 @@ void SpriteManager::updateAll(float deltaTime)
 	{
 		if (sprites[i]->markedForRemoval)
 		{
+			score += sprites[i]->points;
 			sprites[i]->cleanup();
 			delete sprites[i];
 			sprites[i] = nullptr;

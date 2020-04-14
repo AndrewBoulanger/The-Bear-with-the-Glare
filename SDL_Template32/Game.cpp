@@ -183,7 +183,7 @@ void Game::update()
 		newEnemy->setTarget(&(bear->dst));
 		enemyTimer = enemiesSpawnDelay;
 	}
-
+	std::cout << spriteManager.score << "\n";
 }
 
 
