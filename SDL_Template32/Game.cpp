@@ -168,7 +168,7 @@ void Game::update()
 	enemyTimer -= deltaTime;
 	if (enemyTimer <= 0)
 	{
-		Eye* newEnemy = new Eye(pRenderer, "Assets/eye.png", 50, 65, 60);
+		Eye* newEnemy = new Eye(pRenderer, "Assets/eye.png", 50, 65, rand()%30+30);
 		newEnemy->setPosition(800 + rand() % 100,rand() % (600-65));
 		
 

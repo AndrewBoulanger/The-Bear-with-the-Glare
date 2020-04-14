@@ -4,7 +4,7 @@ class Bear :
 	public Sprite
 {
 
-	int health = 5;
+	int health = 100;
 
 public:
 
