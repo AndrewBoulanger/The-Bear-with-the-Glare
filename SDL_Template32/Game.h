@@ -9,6 +9,7 @@
 
 #define NUM_KEYBINDS 6
 
+
 class Game
 {
 	// For framerate
@@ -48,6 +49,8 @@ public:
 	Mix_Chunk* bgm;
 	Mix_Chunk* laser_SFX;
 	SpriteManager spriteManager;
+	Sprite* health;
+	Sprite* healthBar[5];
 
 	Game();
 	Game(const char* windowName, int windowSizeX, int windowSizeY);

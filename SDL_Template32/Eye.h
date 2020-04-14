@@ -17,6 +17,7 @@ public:
 	float shootTimer = rand() %6 +1; // timer which
 
 	float acceleration;
+	float velocity;
 	float counter = 0;
 	float interval = rand() % 10 + 10;
 	void shoot();

@@ -52,10 +52,20 @@ void Sprite::draw()
 		SDL_RenderCopy(renderer, pSpriteTex, &src, &dst);
 }
 
+void Sprite::drawMultiple(int times)
+{
+	for (int i = 0; i <= times; i++)
+	{
+		
+		SDL_RenderCopy(renderer, pSpriteTex, &src, &dst);
+			
+	}
+}
 
 void Sprite::update(float deltaTime)
 {
-	dst.x -= speed;
+	if(tag!=UI)
+		dst.x -= speed;
 	if (tag != NONE && dst.x < 0-dst.w)
 		markedForRemoval = true;
 
