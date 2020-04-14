@@ -18,7 +18,7 @@ void Eye::shoot()
 	if (shootTimer <= 0)
 	{
 		// shoot
-		Bullet* b = new Bullet(renderer, "Assets/laserRed01.png", 25, 10, 200,target->x-dst.x, target->y -dst.y);
+		Bullet* b = new Bullet(renderer, "Assets/laserRed01.png", 25, 10, 200,target->x+target->w/2-dst.x, target->y +target->h/2 -dst.y);
 		b->dst.x = dst.x - dst.w * 0.6;
 		b->dst.y = dst.y + (dst.h * 0.33);
 
@@ -29,9 +29,10 @@ void Eye::shoot()
 
 void Eye::update(float deltaTime)
 {
-	dst.x -= speed * deltaTime;
-	//oh my god, setting their speed to a sin pattern is terrifying. I love it
-	speed +=  2* sin(time(0));
+	counter+=1;
+	velocity = speed * deltaTime;
+	acceleration = 3 * sin(counter / interval) * velocity;
+	dst.x -=velocity + acceleration;
 
 	damageCooldown -= deltaTime;
 	if (damageCooldown < 0) damageCooldown = 0;

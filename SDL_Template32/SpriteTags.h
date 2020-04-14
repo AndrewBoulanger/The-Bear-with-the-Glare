@@ -6,5 +6,6 @@ enum SpriteTag
 	PROJECTILE,
 	PLAYER,
 	OBSTACLE,
-	ENEMY
+	ENEMY,
+	UI
 };

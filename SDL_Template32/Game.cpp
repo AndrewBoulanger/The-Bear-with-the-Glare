@@ -51,11 +51,20 @@ void Game::run()
 	background2 = new Sprite(pRenderer, "Assets/background2.bmp", 800, 600);
 
 	bear = new Bear(pRenderer, "Assets/bear.png", 116, 110, 4);
-	bear->tag = SpriteTag::PLAYER;
+	bear->tag = PLAYER;
+
+	
 
 	spriteManager.add(background1);
 	spriteManager.add(background2);
 	spriteManager.add(bear);
+	for (int i = 0; i < bear->health; i++)
+	{
+		healthBar[i] = new Sprite(pRenderer, "Assets/shield_bronze.PNG", 30, 30);
+		healthBar[i]->tag = UI;
+		healthBar[i]->setPosition(i*healthBar[i]->dst.w, 1);
+	
+	}
 
 	background1->setPosition(0,0);
 	background2->setPosition(800, 0);
@@ -150,8 +159,6 @@ void Game::input()
 
 		}
 
-
-
 }
 
 void Game::update()
@@ -168,7 +175,7 @@ void Game::update()
 	enemyTimer -= deltaTime;
 	if (enemyTimer <= 0)
 	{
-		Eye* newEnemy = new Eye(pRenderer, "Assets/eye.png", 50, 65, 60);
+		Eye* newEnemy = new Eye(pRenderer, "Assets/eye.png", 50, 65, rand()%30+30);
 		newEnemy->setPosition(800 + rand() % 100,rand() % (600-65));
 		
 
@@ -185,9 +192,15 @@ void Game::draw()
 	SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(pRenderer);
 	
+		
 	spriteManager.drawAll();
+	for (int i = 0; i < bear->health; i++)
+	{
+		healthBar[i]->draw();
+	}
 	
 	SDL_RenderPresent(pRenderer);
+
 }
 
 void Game::waitForNextFrame()
