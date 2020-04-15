@@ -65,7 +65,7 @@ void Game::run()
 	spriteManager.add(bear);
 	for (int i = 0; i < bear->health; i++)
 	{
-		healthBar[i] = new Sprite(pRenderer, "Assets/shield_bronze.PNG", 30, 30);
+		healthBar[i] = new Sprite(pRenderer, "Assets/health.png", 20, 30, 10);
 		healthBar[i]->tag = UI;
 		healthBar[i]->setPosition(i*healthBar[i]->dst.w, 1);
 	
@@ -180,6 +180,10 @@ void Game::update()
 
 	background1->moveBackground(backgroundSpeed);
 	background2->moveBackground(backgroundSpeed);
+	for (int i = 0; i < bear->health; i++)
+	{
+		healthBar[i]->updateAnimation();
+	}
 
 	bear->boundsCheck();
 	if (bear->markedForRemoval)
