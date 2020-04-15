@@ -52,14 +52,9 @@ void Sprite::draw()
 		SDL_RenderCopy(renderer, pSpriteTex, &src, &dst);
 }
 
-void Sprite::drawMultiple(int times)
+void Sprite::setFrame(int frame)
 {
-	for (int i = 0; i <= times; i++)
-	{
-		
-		SDL_RenderCopy(renderer, pSpriteTex, &src, &dst);
-			
-	}
+	src.x = frame * src.w;
 }
 
 void Sprite::update(float deltaTime)

@@ -50,7 +50,8 @@ public:
 	void draw();
 	void drawMultiple(int times);
 	virtual void update(float deltaTime);
-	void updateAnimation(); // update the animation state -- added some bugs into it for fun.
+	void updateAnimation(); // update the animation state 
+	void setFrame(int frame);
 	void moveBackground(int scrollSpeed);
 
 	bool isCollidingWith(const Sprite &other);
