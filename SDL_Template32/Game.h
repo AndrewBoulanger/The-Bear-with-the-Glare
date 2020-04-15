@@ -2,6 +2,7 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_mixer.h>
+#include <SDL_ttf.h>
 #include "Bullet.h"
 #include "SpriteManager.h"
 #include "Bear.h"
@@ -39,7 +40,6 @@ class Game
 	float enemiesSpawnDelay = 2.0f;
 	float enemyTimer = 1.0f;
 
-	int score = 0;
 
 public:
 	Bear* bear;
@@ -49,8 +49,10 @@ public:
 	Mix_Chunk* bgm;
 	Mix_Chunk* laser_SFX;
 	SpriteManager spriteManager;
-	Sprite* health;
 	Sprite* healthBar[5];
+	Sprite* num1;
+	Sprite* num2;
+	Sprite* num3;
 
 	Game();
 	Game(const char* windowName, int windowSizeX, int windowSizeY);

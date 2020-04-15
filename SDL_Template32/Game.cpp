@@ -31,6 +31,11 @@ Game::Game(const char* windowName, int windowSizeX, int windowSizeY)
 			{
 				std::cout << "mix failed to initialize" << std:: endl;
 			}
+			if (TTF_Init() != 0)
+			{
+				std::cout << "ttf failed to initialize" << std::endl;
+			}
+
 
 			Mix_OpenAudio(22400, AUDIO_U16, 8, 1024);
 			bgm = Mix_LoadWAV("Assets/bgm.mp3");
@@ -66,10 +71,18 @@ void Game::run()
 	
 	}
 
+	num1 = new Sprite(pRenderer, "Assets/numerals.png", 19, 19,10);
+	num2 = new Sprite(pRenderer, "Assets/numerals.png", 19, 19,10);
+	num3 = new Sprite(pRenderer, "Assets/numerals.png", 19, 19,10);
+	num1->setPosition(780, 0);
+	num2->setPosition(760, 0);
+	num3->setPosition(740, 0);
+	
+
 	background1->setPosition(0,0);
 	background2->setPosition(800, 0);
 	bear->setPosition(400, 400);
-
+	
 	
 	Mix_PlayChannel(0, bgm, -1);
 	Mix_Volume(0, 64);
@@ -172,6 +185,9 @@ void Game::update()
 	if (bear->markedForRemoval)
 		isRunning = false;  
 
+	num2->setFrame(spriteManager.score%100 / 10);
+	num3->setFrame(spriteManager.score%1000 / 100);
+
 	enemyTimer -= deltaTime;
 	if (enemyTimer <= 0)
 	{
@@ -199,6 +215,10 @@ void Game::draw()
 		healthBar[i]->draw();
 	}
 	
+	num1->draw();
+	num2->draw();
+	num3->draw();
+
 	SDL_RenderPresent(pRenderer);
 
 }
@@ -226,9 +246,17 @@ void Game::quit()
 
 void Game::cleanup()
 {
+	for (int i = 0; i < bear->health; i++)
+	{
+		healthBar[i]->cleanup();
+	}
+	num1->cleanup();
+	num2->cleanup();
+	num3->cleanup();
 	bullet->cleanup();
 	spriteManager.cleanup();
 	SDL_DestroyWindow(pWindow);
 	SDL_DestroyRenderer(pRenderer);
+
 	std::cout << "Game Over" << std::endl;
 }
