@@ -46,6 +46,12 @@ void Sprite::setSize(int x, int y)
 	dst.h = y;
 }
 
+void Sprite::setSourceSize(int x, int y)
+{
+	src.w = x;
+	src.h = y;
+}
+
 void Sprite::draw()
 {
 	if(damageCooldown %4 < 2 )

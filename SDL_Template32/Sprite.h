@@ -47,6 +47,7 @@ public:
 
 	void setPosition(int x, int y);
 	void setSize(int x, int y);
+	void setSourceSize(int x, int y);
 	void draw();
 	void drawMultiple(int times);
 	virtual void update(float deltaTime);
