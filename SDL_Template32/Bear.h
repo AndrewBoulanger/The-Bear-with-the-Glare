@@ -6,7 +6,7 @@ class Bear :
 
 
 public:
-	int health = 5;
+	int health = 10;
 
 	float speed = 180;
 	float velX = 0;

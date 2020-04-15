@@ -30,9 +30,9 @@ void Eye::shoot()
 void Eye::update(float deltaTime)
 {
 	counter+=1;
-	velocity = speed * deltaTime;
-	acceleration = 3 * sin(counter / interval) * velocity;
-	dst.x -=velocity + acceleration;
+	deltaSpeed = speed * deltaTime;
+	acceleration = 3 * sin(counter / interval) * deltaSpeed;
+	dst.x -=deltaSpeed + acceleration;
 
 	damageCooldown -= deltaTime;
 	if (damageCooldown < 0) damageCooldown = 0;

@@ -49,7 +49,7 @@ public:
 	Mix_Chunk* bgm;
 	Mix_Chunk* laser_SFX;
 	SpriteManager spriteManager;
-	Sprite* healthBar[5];
+	Sprite* healthBar[10];
 	Sprite* num1;
 	Sprite* num2;
 	Sprite* num3;

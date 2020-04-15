@@ -67,6 +67,7 @@ void Game::run()
 	{
 		healthBar[i] = new Sprite(pRenderer, "Assets/health.png", 20, 30, 10);
 		healthBar[i]->tag = UI;
+		healthBar[i]->setFrame(i);
 		healthBar[i]->setPosition(i*healthBar[i]->dst.w, 1);
 	
 	}
@@ -180,10 +181,10 @@ void Game::update()
 
 	background1->moveBackground(backgroundSpeed);
 	background2->moveBackground(backgroundSpeed);
-	for (int i = 0; i < bear->health; i++)
+	/*for (int i = 0; i < bear->health; i++)
 	{
 		healthBar[i]->updateAnimation();
-	}
+	}*/
 
 	bear->boundsCheck();
 	if (bear->markedForRemoval)
@@ -203,7 +204,6 @@ void Game::update()
 		newEnemy->setTarget(&(bear->dst));
 		enemyTimer = enemiesSpawnDelay;
 	}
-	std::cout << spriteManager.score << "\n";
 }
 
 
