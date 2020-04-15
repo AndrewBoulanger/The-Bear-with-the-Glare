@@ -181,10 +181,7 @@ void Game::update()
 
 	background1->moveBackground(backgroundSpeed);
 	background2->moveBackground(backgroundSpeed);
-	/*for (int i = 0; i < bear->health; i++)
-	{
-		healthBar[i]->updateAnimation();
-	}*/
+
 
 	bear->boundsCheck();
 	if (bear->markedForRemoval)
@@ -193,10 +190,12 @@ void Game::update()
 	num2->setFrame(spriteManager.score%100 / 10);
 	num3->setFrame(spriteManager.score%1000 / 100);
 
-	enemyTimer -= deltaTime;
+
+
+	enemyTimer -= deltaTime ;
 	if (enemyTimer <= 0)
 	{
-		Eye* newEnemy = new Eye(pRenderer, "Assets/eye.png", 50, 65, rand()%30+30);
+		Eye* newEnemy = new Eye(pRenderer, "Assets/eye.png", 50, 65, rand()%40+30);
 		newEnemy->setPosition(800 + rand() % 100,rand() % (600-65));
 		
 

@@ -37,7 +37,7 @@ class Game
 	bool buttonsPressed[NUM_KEYBINDS] = {false};
 
 	//for spawn control
-	float enemiesSpawnDelay = 2.0f;
+	float enemiesSpawnDelay = 2.3f;
 	float enemyTimer = 1.0f;
 
 
